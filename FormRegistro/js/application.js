@@ -113,8 +113,10 @@ function continuar(step) {
 	switch (step) {
 		case 1:
 			renderDomicilio();
+			break;
 		case 2:
 			renderDatosDeContacto();
+			break;
 		case 3:
 			renderDatosLaborales();	
 			break;
