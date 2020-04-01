@@ -113,6 +113,10 @@ function continuar(step) {
 	switch (step) {
 		case 1:
 			renderDomicilio();
+		case 2:
+			renderDatosDeContacto();
+		case 3:
+			renderDatosLaborales();	
 			break;
 	}
 }
@@ -124,6 +128,23 @@ function renderDomicilio() {
 	let nextStep = $("#step2");
 	nextStep.prop("hidden", false);
 }
+
+// renderizar el step domicilio y ocultar el step anterior
+function renderDatosDeContacto() {
+	let thisStep = $("#step2");
+	thisStep.prop("hidden", true);
+	let nextStep = $("#step3");
+	nextStep.prop("hidden", false);
+}
+
+// renderizar el step domicilio y ocultar el step anterior
+function renderDatosLaborales() {
+	let thisStep = $("#step3");
+	thisStep.prop("hidden", true);
+	let nextStep = $("#step4");
+	nextStep.prop("hidden", false);
+}
+
 
 // al cambiar el combo box provincia, renderizar localidades
 $("#cmbProvincia").change(function () {
@@ -208,3 +229,4 @@ $("#cmbTipoDocumento").change(function () {
 		nroTramite.prop("disabled",true);
 	}
 });
+
