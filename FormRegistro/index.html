@@ -2,19 +2,20 @@
 <html>
 
 <head>
-	<title>Formulario de Registro</title>
+	<title>Formulario de Registro para Solicitud de Permiso de Circulación</title>
 
 	<link rel="stylesheet" href="css/bootstrap.min.css">
 	<link rel="stylesheet" href="css/all.css">
 	<link rel="stylesheet" href="css/animate.css">
 	<link rel="stylesheet" href="css/style.css">
-
-	<!--link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous"-->
+	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css"
+		integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
 </head>
 
 <body>
 	<nav class="navbar navbar-expand-lg navbar-light bg-secondary">
-		<a class="navbar-brand text-white" href="#">Formulario de Registro</a>
+		<a class="navbar-brand text-white" href="index.html" style="font-weight: bold;">Formulario de Registro para
+			Solicitud de Permiso de Circulación</a>
 	</nav>
 	<div class="progress">
 		<div class="progress-bar bg-success" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100">
@@ -23,45 +24,51 @@
 	<div class="container mt-3">
 		<div class="row">
 			<div class="col-8">
-				<form name="registro" onsubmit="return validarForm(event);">
+				<form name="registro" id="formulario_registro">
 
 					<!-- datos personales -->
-
 					<div id="step1">
+
+						<div>
+							<h1 class="titulo">Datos Personales</h1>
+						</div>
 
 						<div class="form-group">
 							<label for="cmbNacionalidad">Nacionalidad </label>
-							<select class="form-control" id="cmbNacionalidad" onchange="checkNacionalidad(event, this)">
-								<option value="" data-ort="no hay nada">Seleccione su nacionalidad</option>
-								<option value="argentino" data-ort="data adiconal">Argentino</option>
+							<select class="form-control" id="cmbNacionalidad" required>
+								<option value="">Seleccione su nacionalidad</option>
+								<option value="argentino">Argentino</option>
 								<option value="extranjero">Extranjero</option>
 							</select>
+							<div id="cmbNacionalidad_result"></div>
 						</div>
 
 						<div class="form-group">
 							<label for="cmbGenero">Género </label>
 							<select class="form-control" id="cmbGenero">
-								<option value="" data-ort="no hay nada">Seleccione su género</option>
-								<option value="femenino" data-ort="data adiconal">Femenino</option>
+								<option value="">Seleccione su género</option>
+								<option value="femenino">Femenino</option>
 								<option value="masculino">Masculino</option>
 								<option value="otro">Otro</option>
 							</select>
+							<div id="cmbGenero_result"></div>
 						</div>
 
 						<div class="row">
-							<div class="col-4">
+							<div class="col-6">
 								<div class="form-group">
 									<label for="cmbTipoDocumento">Tipo de Documento </label>
 									<select class="form-control" id="cmbTipoDocumento">
-										<option value="" data-ort="no hay nada">Seleccione su tipo de documento</option>
-										<option value="dni" data-ort="data adiconal">DNI</option>
+										<option value="">Seleccione tipo de documento</option>
+										<option value="dni">DNI</option>
 										<option value="cedula">Cédula</option>
 										<option value="otro">Otro</option>
 									</select>
+									<div id="cmbTipoDocumento_result"></div>
 								</div>
 							</div>
 
-							<div class="col-4">
+							<div class="col-6">
 								<div class="form-group">
 									<label for="txtNroDocumento">Número de Documento</label>
 									<div class="input-group mb-3">
@@ -71,13 +78,14 @@
 											</span>
 										</div>
 										<input type="text" class="form-control" id="txtNroDocumento"
-											placeholder="Ingrese su número de documento"
-											data-info="Completa la información de este campo para continuar">
+											placeholder="Ingrese su número de documento">
+										<div id="txtNroDocumento_result"></div>
 									</div>
+
 								</div>
 							</div>
 
-							<div class="col-4">
+							<div class="col-6">
 								<div class="form-group">
 									<label for="txtNumeroTramite">Número de Trámite del DNI</label>
 									<div class="input-group mb-3">
@@ -88,6 +96,7 @@
 										</div>
 										<input type="text" class="form-control" id="txtNumeroTramite"
 											placeholder="Ingrese el número de trámite de su DNI" disabled>
+										<div id="txtNumeroTramite_result"></div>
 									</div>
 								</div>
 							</div>
@@ -103,6 +112,7 @@
 									</span>
 								</div>
 								<input type="date" class="form-control" id="dateFechaNac" name="fechaNac">
+								<div id="dateFechaNac_result"></div>
 							</div>
 						</div>
 
@@ -117,9 +127,8 @@
 											</span>
 										</div>
 										<input type="text" class="form-control" id="txtNombre"
-											placeholder="Ingrese su nombre" name="nombre"
-											data-info="Completa la información de este campo para continuar">
-										<!--i class="fas fa-question-circle" data-toggle="tooltip" title="Tooltip on bottom"></i-->
+											placeholder="Ingrese su nombre" name="nombre">
+										<div id="txtNombre_result"></div>
 									</div>
 								</div>
 							</div>
@@ -133,92 +142,373 @@
 											</span>
 										</div>
 										<input type="text" class="form-control" id="txtApellido"
-											placeholder="Ingreso su Apellido"
-											data-info="Completa la información de este campo para continuar">
+											placeholder="Ingrese su Apellido">
+										<div id="txtApellido_result"></div>
 									</div>
 								</div>
 							</div>
 						</div>
 
-						<button type="button" class="btn btn-primary mt-3" id="botonStep1"
-							onclick="continuar(1)">Continuar</button>
+						<button type="button" class="btn btn-primary mt-3" id="botonContinuarStep1"
+							onclick="validarDatosPersonales()"
+							style="margin-bottom: 30px; float: right;">Continuar</button>
 
 					</div>
-
 					<!-- end datos personales -->
 
 					<!-- domicilio -->
-
 					<div id="step2" hidden>
 
+						<div>
+							<h1 class="titulo">Domicilio</h1>
+						</div>
+
 						<div class="form-group">
-							<label for="txtNombre">Calle</label>
+							<label for="txtCalle">Calle</label>
 							<div class="input-group mb-3">
 								<div class="input-group-prepend">
 									<span class="input-group-text" id="basic-addon1">
 										<i class="fas fa-address-book text-primary"></i>
 									</span>
 								</div>
-								<input type="text" class="form-control" id="txtCalle" placeholder="Ingrese Calle"
-									name="calle" data-info="Completa la información de este campo para continuar">
-								<!--i class="fas fa-question-circle" data-toggle="tooltip" title="Tooltip on bottom"></i-->
+								<input type="text" class="form-control" id="txtCalle" placeholder="Ingrese Calle" name="calle">
+								<div id="txtCalle_result"></div>
 							</div>
 						</div>
 
 						<div class="form-group">
-							<label for="txtApellido">Altura</label>
+							<label for="txtAltura">Altura</label>
 							<div class="input-group mb-3">
 								<div class="input-group-prepend">
 									<span class="input-group-text" id="basic-addon1">
 										<i class="fas fa-address-book text-primary"></i>
 									</span>
 								</div>
-								<input type="text" class="form-control" id="txtAltura" placeholder="Ingrese Altura"
-									data-info="Completa la información de este campo para continuar">
+								<input type="text" class="form-control" id="txtAltura" placeholder="Ingrese Altura">
+								<div id="txtAltura_result"></div>
 							</div>
 						</div>
 
 						<div class="form-group">
-							<label for="txtDni">Piso/Dpto </label>
+							<label for="txtPisoDpto">Piso/Dpto </label>
 							<div class="input-group mb-3">
 								<div class="input-group-prepend">
 									<span class="input-group-text" id="basic-addon1">
 										<i class="fas fa-id-card text-primary"></i>
 									</span>
 								</div>
-								<input type="text" class="form-control" id="txtPisoDpto" placeholder="Ingrese Piso/Dpto"
-									data-info="Completa la información de este campo para continuar">
+								<input type="text" class="form-control" id="txtPisoDpto"
+									placeholder="Ingrese Piso/Dpto">
 							</div>
 						</div>
 
 						<div class="form-group" id="provincia">
 							<label for="cmbProvincia">Provincia </label>
-							<select class="form-control" id="cmbProvincia" onchange="checkPronvincia(event, this)">
-								<option value="" data-ort="no hay nada">Seleccionar Provincia</option>
-								<option value="caba" data-ort="data adiconal">Ciudad de Buenos Aires</option>
-								<option value="buenos-aires">Buenos Aires</option>
-								<option value="santa-fe">Santa Fe</option>
-								<option value="la-pampa">La Pampa</option>
-								<option value="mendoza">Mendoza</option>
+							<select class="form-control" id="cmbProvincia">
+								<option value="">Elija una provincia</option>
+								<option value="Buenos Aires">Bs. As.</option>
+								<option value="Catamarca">Catamarca</option>
+								<option value="Chaco">Chaco</option>
+								<option value="Chubut">Chubut</option>
+								<option value="Cordoba">Cordoba</option>
+								<option value="Corrientes">Corrientes</option>
+								<option value="Entre Rios">Entre Rios</option>
+								<option value="Formosa">Formosa</option>
+								<option value="Jujuy">Jujuy</option>
+								<option value="La Pampa">La Pampa</option>
+								<option value="La Rioja">La Rioja</option>
+								<option value="Mendoza">Mendoza</option>
+								<option value="Misiones">Misiones</option>
+								<option value="Neuquen">Neuquen</option>
+								<option value="Rio Negro">Rio Negro</option>
+								<option value="Salta">Salta</option>
+								<option value="San Juan">San Juan</option>
+								<option value="San Luis">San Luis</option>
+								<option value="Santa Cruz">Santa Cruz</option>
+								<option value="Santa Fe">Santa Fe</option>
+								<option value="Sgo. del Estero">Sgo. del Estero</option>
+								<option value="Tierra del Fuego">Tierra del Fuego</option>
+								<option value="Tucuman">Tucuman</option>
 							</select>
+							<div id="cmbProvincia_result"></div>
 						</div>
 
-						<div class="form-group" id="localidad">
-							<label for="cmbLocalidad">Ciudad</label>
-							<select class="form-control" id="cmbLocalidad" name="cmbLocalidad">
-								<option value="retiro">Retiro</option>
-								<option value="nunez">Nuñez</option>
-								<option value="villa-del-parque">Villa del Parque</option>
-								<option value="monte-castro">Monte Castro</option>
-								<option value="caballito">Caballito</option>
+						<div class="form-group" id="ciudad">
+							<label for="cmbCiudad">Ciudad</label>
+							<select class="form-control" id="cmbCiudad" name="cmbCiudad">
+								<option value="">Elija una ciudad</option>
 							</select>
+							<div id="cmbCiudad_result"></div>
 						</div>
 
-						<button type="button" class="btn btn-primary mt-3" id="botonStep2"
-							onclick="continuar(2)">Continuar</button>
+						<button type="button" class="btn btn-primary mt-3" id="botonRegresarStep2"
+							onclick="changeStep(1)" style="margin-bottom: 30px; float: left;">Regresar</button>
+						<button type="button" class="btn btn-primary mt-3" id="botonContinuarStep2"
+							onclick="validarDatosDomicilio()" style="margin-bottom: 30px; float: right;">Continuar</button>
 
 					</div>
 					<!-- end domicilio -->
+
+					<!-- datos de contacto -->
+					<div id="step3" hidden>
+
+						<div>
+							<h1 class="titulo">Datos de contacto</h1>
+						</div>
+
+						<div class="form-group">
+							<label for="txtTelefono">Teléfono Celular</label>
+							<div class="input-group mb-3">
+								<div class="input-group-prepend">
+									<span class="input-group-text" id="basic-addon1">
+										<i class="fas fa-phone text-primary"></i>
+									</span>
+								</div>
+								<input type="text" class="form-control" id="txtTelefono"
+									placeholder="Ingrese su teléfono" name="telefono">
+								<div id="txtTelefono_result"></div>
+							</div>
+						</div>
+
+						<div class="form-group">
+							<label for="txtEmail">Correo electrónico</label>
+							<div class="input-group mb-3">
+								<div class="input-group-prepend">
+									<span class="input-group-text" id="basic-addon1">
+										<i class="fas fa-at text-primary"></i>
+									</span>
+								</div>
+								<input type="text" class="form-control" id="txtEmail"
+									placeholder="Ingrese su correo electrónico">
+								<div id="txtEmail_result"></div>
+							</div>
+						</div>
+
+						<div class="form-group">
+							<label for="txtGithub">Cuenta de Github </label>
+							<div class="input-group mb-3">
+								<div class="input-group-prepend">
+									<span class="input-group-text" id="basic-addon1">
+										<i class="fas fa-user-circle text-primary"></i>
+									</span>
+								</div>
+								<input type="text" class="form-control" id="txtGithub"
+									placeholder="Ingrese su cuenta de Github">
+							</div>
+						</div>
+
+						<button type="button" class="btn btn-primary mt-3" id="botonRegresarStep3"
+							onclick="changeStep(2)" style="margin-bottom: 30px; float: left;">Regresar</button>
+						<button type="button" class="btn btn-primary mt-3" id="botonContinuarStep3"
+							onclick="validarDatosContacto()" style="margin-bottom: 30px; float: right;">Continuar</button>
+
+					</div>
+					<!-- end datos de contacto -->
+
+					<!-- datos laborales -->
+					<div id="step4" hidden>
+
+						<div>
+							<h1 class="titulo">Datos Laborales</h1>
+						</div>
+
+						<div class="form-group">
+							<label for="txtLugarTrabajo">Lugar de trabajo</label>
+							<div class="input-group mb-3">
+								<div class="input-group-prepend">
+									<span class="input-group-text" id="basic-addon1">
+										<i class="fas fa-address-book text-primary"></i>
+									</span>
+								</div>
+								<input type="text" class="form-control" id="txtLugarTrabajo"
+									placeholder="Ingrese lugar de trabajo" name="lugarTrabajo">
+								<div id="txtLugarTrabajo_result"></div>
+							</div>
+						</div>
+
+						<div class="form-group">
+							<label for="txtCalleTrabajo">Calle</label>
+							<div class="input-group mb-3">
+								<div class="input-group-prepend">
+									<span class="input-group-text" id="basic-addon1">
+										<i class="fas fa-address-book text-primary"></i>
+									</span>
+								</div>
+								<input type="text" class="form-control" id="txtCalleTrabajo" placeholder="Ingrese Calle"
+									name="calleTrabajo">
+								<div id="txtCalleTrabajo_result"></div>
+							</div>
+						</div>
+
+						<div class="form-group">
+							<label for="txtAlturaTrabajo">Altura</label>
+							<div class="input-group mb-3">
+								<div class="input-group-prepend">
+									<span class="input-group-text" id="basic-addon1">
+										<i class="fas fa-address-book text-primary"></i>
+									</span>
+								</div>
+								<input type="text" class="form-control" id="txtAlturaTrabajo"
+									placeholder="Ingrese Altura">
+								<div id="txtAlturaTrabajo_result"></div>
+							</div>
+						</div>
+
+						<div class="form-group">
+							<label for="txtPisoDptoTrabajo">Piso/Dpto </label>
+							<div class="input-group mb-3">
+								<div class="input-group-prepend">
+									<span class="input-group-text" id="basic-addon1">
+										<i class="fas fa-id-card text-primary"></i>
+									</span>
+								</div>
+								<input type="text" class="form-control" id="txtPisoDptoTrabajo"
+									placeholder="Ingrese Piso/Dpto">
+							</div>
+						</div>
+
+						<div class="form-group" id="provincia">
+							<label for="cmbProvinciaTrabajo">Provincia </label>
+							<select class="form-control" id="cmbProvinciaTrabajo">
+								<option value="">Elija una provincia</option>
+								<option value="Buenos Aires">Bs. As.</option>
+								<option value="Catamarca">Catamarca</option>
+								<option value="Chaco">Chaco</option>
+								<option value="Chubut">Chubut</option>
+								<option value="Cordoba">Cordoba</option>
+								<option value="Corrientes">Corrientes</option>
+								<option value="Entre Rios">Entre Rios</option>
+								<option value="Formosa">Formosa</option>
+								<option value="Jujuy">Jujuy</option>
+								<option value="La Pampa">La Pampa</option>
+								<option value="La Rioja">La Rioja</option>
+								<option value="Mendoza">Mendoza</option>
+								<option value="Misiones">Misiones</option>
+								<option value="Neuquen">Neuquen</option>
+								<option value="Rio Negro">Rio Negro</option>
+								<option value="Salta">Salta</option>
+								<option value="San Juan">San Juan</option>
+								<option value="San Luis">San Luis</option>
+								<option value="Santa Cruz">Santa Cruz</option>
+								<option value="Santa Fe">Santa Fe</option>
+								<option value="Sgo. del Estero">Sgo. del Estero</option>
+								<option value="Tierra del Fuego">Tierra del Fuego</option>
+								<option value="Tucuman">Tucuman</option>
+							</select>
+							<div id="cmbProvinciaTrabajo_result"></div>
+						</div>
+
+						<div class="form-group" id="ciudadTrabajo">
+							<label for="cmbCiudadTrabajo">Ciudad</label>
+							<select class="form-control" id="cmbCiudadTrabajo" name="cmbCiudadTrabajo">
+								<option value="">Elija una ciudad</option>
+							</select>
+							<div id="cmbCiudadTrabajo_result"></div>
+						</div>
+
+						<div class="form-group">
+							<label for="txtTelefonoLaboral">Teléfono Laboral</label>
+							<div class="input-group mb-3">
+								<div class="input-group-prepend">
+									<span class="input-group-text" id="basic-addon1">
+										<i class="fas fa-phone text-primary"></i>
+									</span>
+								</div>
+								<input type="text" class="form-control" id="txtTelefonoLaboral"
+									placeholder="Ingrese su teléfono" name="telefonoLaboral">
+							</div>
+						</div>
+
+						<div class="form-group">
+							<label for="radioProfesionalSalud">Es profesional de la salud?</label>
+							<div class="custom-control custom-radio">
+								<input type="radio" class="custom-control-input" id="radiobtnProfesionalSaludNo"
+									name="radiobtnProfesionalSalud" value="no" checked>
+								<label class="custom-control-label" for="radiobtnProfesionalSaludNo">No</label>
+							</div>
+							<div class="custom-control custom-radio">
+								<input type="radio" class="custom-control-input" id="radiobtnProfesionalSaludSi"
+									name="radiobtnProfesionalSalud" value="si">
+								<label class="custom-control-label" for="radiobtnProfesionalSaludSi">Si</label>
+								<div id="radiobtnProfesionalSalud_result"></div>
+							</div>
+						</div>
+
+						<div class="row">
+							<div class="col-6" id="matricula" hidden>
+								<div class="form-group">
+									<label for="txtMatricula">Matrícula</label>
+									<div class="input-group mb-3">
+										<div class="input-group-prepend">
+											<span class="input-group-text" id="basic-addon1">
+												<i class="fas fa-address-book text-primary"></i>
+											</span>
+										</div>
+										<input type="text" class="form-control" id="txtMatricula"
+											placeholder="Ingrese su matrícula" name="matricula">
+										<div id="txtMatricula_result"></div>
+									</div>
+								</div>
+							</div>
+							<div class="col-6" id="autoridadMatricula" hidden>
+								<div class="form-group">
+									<label for="txtAutoridadMatricula">Autoridad emisora de la matrícula</label>
+									<div class="input-group mb-3">
+										<div class="input-group-prepend">
+											<span class="input-group-text" id="basic-addon1">
+												<i class="fas fa-address-book text-primary"></i>
+											</span>
+										</div>
+										<input type="text" class="form-control" id="txtAutoridadMatricula"
+											placeholder="Ingrese la autoridad emisora">
+									</div>
+								</div>
+							</div>
+						</div>
+
+						<button type="button" class="btn btn-primary mt-3" id="botonRegresarStep3"
+							onclick="changeStep(3)" style="margin-bottom: 30px; float: left;">Regresar</button>
+						<button type="button" class="btn btn-primary mt-3" id="botonContinuarStep3"
+							onclick="validarDatosLaborales()" style="margin-bottom: 30px; float: right;">Continuar</button>
+
+					</div>
+					<!-- end datos laborales -->
+
+					<!-- motivo -->
+					<div id="step5" hidden>
+
+						<div>
+							<h1 class="titulo">Motivo de la solicitud</h1>
+						</div>
+
+						<div class="form-group">
+							<label for="txtMotivo">Motivo por el que solicita el permiso</label>
+							<div class="input-group mb-3">
+								<div class="input-group-prepend">
+									<span class="input-group-text" id="basic-addon1">
+										<i class="fas fa-question text-primary"></i>
+									</span>
+								</div>
+								<input type="text" class="form-control" id="txtMotivo" placeholder="Ingrese el motivo"
+									name="motivo">
+							</div>
+						</div>
+
+						<div class="custom-control custom-checkbox">
+							<input type="checkbox" class="custom-control-input" id="terminos_y_condiciones">
+							<label class="custom-control-label" for="terminos_y_condiciones">
+								Aceptar <a href="#" data-toggle="modal" data-target="#exampleModal">Terminos y Condiciones</a></label>
+							<div id="terminos_y_condiciones_result"></div>
+						</div>
+
+						<button type="button" class="btn btn-primary mt-3" id="botonRegresarStep4"
+							onclick="changeStep(4)" style="margin-bottom: 30px; float: left;">Regresar</button>
+						<button type="submit" class="btn btn-primary mt-3" id="enviarFormulario" onclick="validar()"
+							style="margin-bottom: 30px; float: right;">Enviar Formulario</button>
+
+					</div>
+					<!-- end motivo -->
+
 
 			</div>
 
